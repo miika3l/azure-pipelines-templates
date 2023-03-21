@@ -17,6 +17,10 @@ parameters:
   default: 'helloworld-nodejs-24602'
   type: string
 
+- name: 'package'
+  default: ''
+  type: string
+
 jobs:
 - deployment: Deploy
   displayName: Deploy
@@ -34,5 +38,5 @@ jobs:
             appType: webAppLinux
             appName: ${{ parameters.webAppName }}
             runtimeStack: 'NODE|16-lts'
-            package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+            package: ${{ parameters.package }}
             startUpCommand: 'npm run start'
