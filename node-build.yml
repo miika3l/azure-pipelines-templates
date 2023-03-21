@@ -5,6 +5,7 @@ parameters:
   default: 'ubuntu 16.04'
   type: string
 
+jobs:
 - job: Build
   displayName: Build
   pool:
