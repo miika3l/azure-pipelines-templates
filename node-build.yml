@@ -4,18 +4,6 @@ parameters:
 - name: 'vmImage'
   default: 'ubuntu-latest'
   type: string
-  
-- name: 'azureSubscription'
-  default: '6a6a3c80-0099-4495-b0fb-761da697cf53'
-  type: string
-
-- name: 'webAppName'
-  default: 'helloworld-nodejs-24602'
-  type: string
-
-- name: 'environmentName'
-  default: 'helloworld-nodejs-24602'
-  type: string
 
 jobs:
 - job: Build
@@ -46,22 +34,3 @@ jobs:
 
   - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
     artifact: drop
-
-- deployment: Deploy
-  displayName: Deploy
-  environment: ${{ parameters.environmentName }}
-  pool:
-    vmImage: ${{ parameters.vmImage }}
-  strategy:
-    runOnce:
-      deploy:
-        steps:
-        - task: AzureWebApp@1
-          displayName: 'Azure Web App Deploy: helloworld-nodejs-24602'
-          inputs:
-            azureSubscription: ${{ parameters.azureSubscription }}
-            appType: webAppLinux
-            appName: ${{ parameters.webAppName }}
-            runtimeStack: 'NODE|16-lts'
-            package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-            startUpCommand: 'npm run start'
