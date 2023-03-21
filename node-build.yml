@@ -1,4 +1,4 @@
-# Repo: azure-pipelines-templates/node
+# Repo: miika3l/azure-pipelines-templates
 # File: node-build.yml
 parameters:
 - name: 'vmImage'
