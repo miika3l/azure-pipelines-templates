@@ -2,7 +2,7 @@
 # File: node-build.yml
 parameters:
 - name: 'vmImage'
-  default: 'ubuntu 16.04'
+  default: 'ubuntu-latest'
   type: string
 
 jobs:
