@@ -6,7 +6,7 @@ parameters:
   type: string
   
 - name: 'azureSubscription'
-  default: '6a6a3c80-0099-4495-b0fb-761da697cf53'
+  default: '16137c1d-d689-4f68-9823-494e641209ab'
   type: string
 
 - name: 'webAppName'
